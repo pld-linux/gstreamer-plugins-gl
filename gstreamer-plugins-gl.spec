@@ -36,6 +36,7 @@ BuildRequires:	python >= 2.1
 BuildRequires:	rpmbuild(macros) >= 1.470
 Requires:	gstreamer >= %{gst_req_ver}
 Requires:	gstreamer-plugins-base >= %{gstpb_req_ver}
+Obsoletes:	gstreamer-imagesink-gl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
