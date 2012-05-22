@@ -4,20 +4,20 @@
 #
 %define		gstname gst-plugins-gl
 %define		gst_major_ver   0.10
-%define		gst_req_ver	0.10.28
-%define		gstpb_req_ver	0.10.28
+%define		gst_req_ver	0.10.35
+%define		gstpb_req_ver	0.10.35
 #
 %include	/usr/lib/rpm/macros.gstreamer
 #
 Summary:	GStreamer Streaming-media framework plug-in for OpenGL
 Summary(pl.UTF-8):	Wtyczka OpenGL do środowiska strumieni multimedialnych GStreamer
 Name:		gstreamer-plugins-gl
-Version:	0.10.2
-Release:	6
+Version:	0.10.3
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-gl/%{gstname}-%{version}.tar.bz2
-# Source0-md5:	878fe4199be1c94f8aa2f7f23891cc95
+# Source0-md5:	ac70ede13f79978d56eaed8abaa3c938
 URL:		http://gstreamer.net/
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	autoconf >= 2.60
@@ -29,13 +29,18 @@ BuildRequires:	glib2-devel >= 1:2.6
 BuildRequires:	gstreamer-devel >= %{gst_req_ver}
 BuildRequires:	gstreamer-plugins-base-devel >= %{gstpb_req_ver}
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.6}
+BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel >= 1.0
+BuildRequires:	libprojectM-devel >= 2.0.1
+BuildRequires:	libvisual-devel >= 0.4.0
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	pkgconfig
 BuildRequires:	python >= 2.1
 BuildRequires:	rpmbuild(macros) >= 1.470
 Requires:	gstreamer >= %{gst_req_ver}
 Requires:	gstreamer-plugins-base >= %{gstpb_req_ver}
+Requires:	libprojectM >= 2.0.1
+Requires:	libvisual >= 0.4.0
 Obsoletes:	gstreamer-imagesink-gl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -83,7 +88,7 @@ GStreamer.
 %build
 %{__gettextize}
 %{__libtoolize}
-%{__aclocal} -I common/m4
+%{__aclocal} -I m4 -I common/m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
@@ -116,6 +121,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libgstgl-%{gst_major_ver}.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgstgl-%{gst_major_ver}.so.1
 %attr(755,root,root) %{_libdir}/gstreamer-%{gst_major_ver}/libgstopengl.so
+%attr(755,root,root) %{_libdir}/gstreamer-%{gst_major_ver}/libgstlibvisualgl.so
 
 %files devel
 %defattr(644,root,root,755)
