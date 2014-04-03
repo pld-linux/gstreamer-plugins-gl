@@ -6,14 +6,13 @@
 %define		gst_major_ver   0.10
 %define		gst_req_ver	0.10.35
 %define		gstpb_req_ver	0.10.35
-#
+
 %include	/usr/lib/rpm/macros.gstreamer
-#
 Summary:	GStreamer Streaming-media framework plug-in for OpenGL
 Summary(pl.UTF-8):	Wtyczka OpenGL do środowiska strumieni multimedialnych GStreamer
 Name:		gstreamer-plugins-gl
 Version:	0.10.3
-Release:	4
+Release:	5
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-gl/%{gstname}-%{version}.tar.bz2
@@ -32,8 +31,8 @@ BuildRequires:	gstreamer-plugins-base-devel >= %{gstpb_req_ver}
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel >= 1.0
 BuildRequires:	libprojectM-devel >= 2.0.1
-BuildRequires:	libvisual-devel >= 0.4.0
 BuildRequires:	libtool >= 2:1.5
+BuildRequires:	libvisual-devel >= 0.4.0
 BuildRequires:	pkgconfig
 BuildRequires:	python >= 2.1
 BuildRequires:	rpmbuild(macros) >= 1.470
@@ -74,6 +73,9 @@ Summary:	GStreamer streaming-media framework OpenGL API documentation
 Summary(pl.UTF-8):	Dokumentacja API OpenGL dla środowiska strumieni multimedialnych GStreamer
 Group:		Documentation
 Requires:	gtk-doc-common
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 GStreamer streaming-media framework OpenGL API documentation.
@@ -102,7 +104,6 @@ GStreamer.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
