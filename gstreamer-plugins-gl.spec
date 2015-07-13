@@ -12,7 +12,7 @@ Summary:	GStreamer Streaming-media framework plug-in for OpenGL
 Summary(pl.UTF-8):	Wtyczka OpenGL do środowiska strumieni multimedialnych GStreamer
 Name:		gstreamer-plugins-gl
 Version:	0.10.3
-Release:	5
+Release:	6
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-gl/%{gstname}-%{version}.tar.bz2
